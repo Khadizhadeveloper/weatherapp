@@ -1,0 +1,70 @@
+/* Основные стили страницы */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Оформление контейнера для погоды */
+.weather-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Заголовок */
+.weather-container h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Температура */
+.weather-container .temperature {
+    font-size: 4em;
+    color: #ff5722;
+}
+
+/* Описание погоды */
+.weather-container .description {
+    font-size: 1.5em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Дополнительные данные (влажность, ветер и т.д.) */
+.weather-container .details {
+    font-size: 1em;
+    color: #777;
+}
+
+.weather-container .details span {
+    display: block;
+    margin: 5px 0;
+}
+
+/* Кнопка обновления погоды */
+.refresh-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.refresh-button:hover {
+    background-color: #0056b3;
+}

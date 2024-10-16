@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приложение для погоды</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Погода</h1>
+
+    <form method="get">
+        <input type="text" name="city" placeholder="Введите город" value="{{ city }}" required>
+        <button type="submit">Показать погоду</button>
+    </form>
+
+    {% if weather_data %}
+        <div class="weather-container">
+            <h2>Текущая погода в {{ weather_data.name }}:</h2>
+            <div class="temperature">{{ weather_data.main.temp }}°C</div>
+            <div class="description">{{ weather_data.weather.0.description }}</div>
+            <div class="details">
+                <span>Влажность: {{ weather_data.main.humidity }}%</span>
+                <span>Скорость ветра: {{ weather_data.wind.speed }} м/с</span>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if forecast_data and forecast_data.daily %}
+        <div class="forecast-container">
+            <h2>Прогноз на 7 дней:</h2>
+            <div class="forecast">
+                {% for day in forecast_data.daily %}
+                    <div class="day-forecast">
+                        <p><strong>День {{ forloop.counter }}:</strong></p>
+                        <p>Температура: {{ day.temp.day }}°C</p>
+                        <p>Ощущается как: {{ day.feels_like.day }}°C</p>
+                        <p>Описание: {{ day.weather.0.description }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <button class="refresh-button" onclick="window.location.reload();">Обновить</button>
+</body>
+</html>
